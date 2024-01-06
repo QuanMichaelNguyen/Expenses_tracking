@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def index():
     # return render_template('index.html')
-    return "Hello world"
+    return "This is expense tracking app"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
