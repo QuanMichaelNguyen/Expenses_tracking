@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{%block head %}
+<title>Expenses Tracking</title>
+
+
+{% endblock %}
+
+
+
+
+{%block body %}
+
+<div class = 'content'>
+    <h1>Expenses Tracking</h1>
+    <table>
+        <tr>
+            <th> Task</th>
+            <th> Added</th>
+            <th> Actions </th>
+        </tr>
+        {% for task in categories %}
+            <tr>
+                <td>{{task.content}}</td>
+                <td>{{task.date_created.date()}}</td>
+                <td>
+                    <a href="">Delete</a>
+                    <br>
+                    <a href="">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form action = "/" method = "POST">
+        <input type = "text" name = "content" id = "content">
+        <input type = "submit" value = "Add Category"
+    </form>
+</div>
+{% endblock %}

@@ -1,6 +1,8 @@
 import calendar
 import datetime
 from expenses import Expense
+import csv
+import matplotlib.pyplot as plt
 def get_user_expense():
     print("Getting User Expense")
     expense_name = input("Enter expense name: ")
@@ -36,16 +38,17 @@ def summarize_expense(expense_file_path, budget):
     print("Summarizing User Expense")
     expenses: list[Expense] = []
     with open(expense_file_path, "r") as f:
-        lines = f.readlines()
-        for line in lines:
-            stripped_line = line.strip()
-            expense_name, expense_amount, expense_category = stripped_line.split(",")
-            line_expense = Expense(
-                name=expense_name,
-                amount=float(expense_amount),
-                category=expense_category
-            )
-            expenses.append(line_expense)
+        #
+        csv_reader = csv.reader(f)
+        for row in csv_reader:
+            if len(row) == 3:
+                expense_name, expense_amount, expense_category = row
+                line_expense = Expense(
+                    name=expense_name,
+                    amount=float(expense_amount),
+                    category=expense_category
+                )
+                expenses.append(line_expense)
 
     amount_by_category = {}
     for expense in expenses:
@@ -86,4 +89,11 @@ def summarize_expense(expense_file_path, budget):
         print(f"Out of budget: {remaining_budget} ")
     
     
+    categories = list(amount_by_category.keys())
+    amounts = list(amount_by_category.values())
 
+    plt.bar(categories, amounts, color = 'red')
+    plt.xlabel('Expense Categories')
+    plt.title('Expense Distribution')
+    plt.xticks(rotation = 45, ha = 'right')
+    plt.show()
