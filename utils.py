@@ -6,32 +6,43 @@ import matplotlib.pyplot as plt
 def get_user_expense():
     print("Getting User Expense")
     expense_name = input("Enter expense name: ")
-    expense_amount = float(input("Enter expense amount: "))
+    # Store multiple expenses
+    expenses_list = []
+    while expense_name.lower() != "done":
+        expense_amount = float(input("Enter expense amount: "))
 
-    expense_categories = ["Food", "Rent", "Electricity", "Utilities", "Fun", "Misc"]
+        expense_categories = ["Food", "Rent", "Electricity", "Utilities", "Fun", "Misc"]
 
-    while True:
-        print("Select a category: ")
-        for i, category_name in enumerate(expense_categories):
-            print(f"{i+1}. {category_name}")
-        range_to_choose = f"[1- {len(expense_categories)}]"
-        try:
-            # -1 to return to actual index of expenses_categories
-            selected_index = int(input(f"Enter a category number {range_to_choose}: ")) - 1
-        except ValueError:
-            pass
-        if selected_index in range(len(expense_categories)):
-            selected_category = expense_categories[selected_index]
-            # make an instance of Expense class
-            new_expense = Expense(name = expense_name, category=selected_category, amount=expense_amount)
-            return new_expense
-        else:
-            print("Please choose valid category again")
+        while True:
+            print("Select a category: ")
+            for i, category_name in enumerate(expense_categories):
+                print(f"{i+1}. {category_name}")
+            range_to_choose = f"[1- {len(expense_categories)}]"
+            try:
+                # -1 to return to actual index of expenses_categories
+                selected_index = int(input(f"Enter a category number {range_to_choose}: ")) - 1
+            except ValueError:
+                pass
+            if selected_index in range(len(expense_categories)):
+                selected_category = expense_categories[selected_index]
+                # make an instance of Expense class
+                new_expense = Expense(name = expense_name, category=selected_category, amount=expense_amount)
+                # return new_expense
+                expenses_list.append(new_expense)
+                break
+            else:
+                print("Please choose valid category again")
+        expense_name = input("Enter expense name (or type 'done' to finish): ")
 
-def save_expense_to_file(expense: Expense, expense_file_path):
-    print(f"Saving User Expense: {expense} to {expense_file_path}")
+    return expenses_list
+
+def save_expense_to_file(expenses, expense_file_path):
+    # print(f"Saving User Expense: {expense} to {expense_file_path}")
+    print(f"Saving User Expenses to {expense_file_path}")
+
     with open(expense_file_path, "a") as f:
-        f.write(f"{expense.name},{expense.amount},{expense.category}\n")
+        for expense in expenses:
+            f.write(f"{expense.name},{expense.amount},{expense.category}\n")
 
 
 def summarize_expense(expense_file_path, budget):
@@ -92,7 +103,7 @@ def summarize_expense(expense_file_path, budget):
     categories = list(amount_by_category.keys())
     amounts = list(amount_by_category.values())
 
-    plt.bar(categories, amounts, color = 'red')
+    plt.bar(categories, amounts, color = 'green')
     plt.xlabel('Expense Categories')
     plt.title('Expense Distribution')
     plt.xticks(rotation = 45, ha = 'right')
