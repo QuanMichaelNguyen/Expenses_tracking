@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses Tracker</title>
+    <style>
+        table {
+            width: 100%; /* Set the table width to 100% of its container */
+            border-collapse: collapse; /* Collapse the borders to avoid spacing between cells */
+        }
+
+        th, td {
+            border: 1px solid black; /* Add a border to table header cells and data cells */
+            padding: 8px; /* Add some padding to cells for better spacing */
+        }
+    </style>
 </head>
 <body>
     <h1>Expenses Tracker</h1>
@@ -25,5 +36,6 @@
             {% endfor %}
         </tbody>
     </table>
+    <img src="graph.jpg" alt="Matplotlib Graph">
 </body>
 </html>

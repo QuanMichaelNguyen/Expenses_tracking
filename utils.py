@@ -108,3 +108,5 @@ def summarize_expense(expense_file_path, budget):
     plt.title('Expense Distribution')
     plt.xticks(rotation = 45, ha = 'right')
     plt.show()
+    # Save the Matplotlib figure as an image (e.g., PNG)
+    plt.savefig('templates/graph.jpg')
