@@ -1,13 +1,12 @@
-COT3100,115.0,Misc
-fish,15.0,Food
-french fries,40.0,Food
-grounded beef,40.0,Food
-pearson,75.0,Misc
+food1,10.8,Food
+food2,35.44,Food
+food3,16.36,Food
+food4,11.64,Food
+food5,11.64,Food
 renting,425.0,Rent
-girl,500.0,Fun
-strawberry,50.0,Food
-banana,10.0,Food
-water,4.0,Utilities
-physic,45.0,Misc
-lamezi,45.0,Food
-eggs,2.75,Food
+utilities,27.15,Utilities
+NSBE,224.5,Misc
+wifi,7.0,Utilities
+sim,30.75,Utilities
+elec,24.49,Electricity
+beef,45.0,Food

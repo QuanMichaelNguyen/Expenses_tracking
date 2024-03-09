@@ -1,4 +1,34 @@
+
+.table_header{
+    background-color: #DBDBDB;
+
+}
+table{
+    box-shadow: 1px 1px 4px black;
+    border-collapse:collapse;
+    border: none
+}
+th, td {
+    border: none !important; 
+}
+
+
 body {
     margin: 5px;
     font-family: sans-serif;
+}
+tr:nth-child(2n){
+    background-color: #DBDBDB;
+}
+td{
+    text-align: center;
+}
+button{
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 15px;
+}
+div{
+    display: flex;
+    justify-content: space-between;
 }

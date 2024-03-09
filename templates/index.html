@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
     <title>Expenses Tracker</title>
     <style>
         table {
@@ -19,14 +20,14 @@
 <body>
     <h1>Expenses Tracker</h1>
     <table border="1">
-        <thead>
+        <thead class="table_header">
             <tr>
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Category</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style=>
             {% for expense in expenses %}
             <tr>
                 <td>{{ expense.name }}</td>
@@ -36,6 +37,19 @@
             {% endfor %}
         </tbody>
     </table>
-    <img src="graph.jpg" alt="Matplotlib Graph">
+  
+
+    <div>
+        <button id="addExpenseBtn">
+            Add Expense
+        </button>
+        <button id="modifyExpenseBtn">
+            Modify Expense
+        </button>
+        <button id="deleteExpenseBtn">
+            Delete Expense
+        </button>
+    </div>
+    <script src="../button.js"></script>
 </body>
 </html>
